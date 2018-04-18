@@ -1,13 +1,15 @@
 #coding=utf-8
-from WxNeteaseMusic import WxNeteaseMusic
+from WxNeteaseMusic import Player
 import itchat
 
-wnm = WxNeteaseMusic()
+player=Player()
 @itchat.msg_register(itchat.content.TEXT)
 def mp3_player(msg):
-    text = msg['Text']
-    res = wnm.msg_handler(text)
+    text=msg['Text']
+    res=player.msg_handler(text)
     return res
 
-itchat.auto_login(enableCmdQR=True)
+itchat.auto_login()#可选enableCmdQR=True
+player.playLock=True
 itchat.run(debug=False)
+exit()
